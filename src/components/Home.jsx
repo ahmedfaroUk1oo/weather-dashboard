@@ -68,25 +68,26 @@ export default function Home() {
   return (
     <>
     <section className='bg-[#212529]'>
-    <div className="container mx-auto p-4">
-      <form onSubmit={handleSubmit} className="mb-4 flex flex-wrap gap-4">
-        <input
-          type="text"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          placeholder="Enter city name"
-          className="p-2 border rounded mr-2 flex-grow"
-        />
-        <button type="submit" className="p-2 bg-blue-500 text-white rounded">
-          Search
-        </button>
-        <button 
+    <div className="container mx-auto p-4 flex items-center justify-between">
+    <button 
           type="button" 
           onClick={() => setIsSidebarOpen(true)}
           className="p-2 w-[100px] bg-gray-500 flex justify-center items-center gap-4 text-white rounded ml-2"
         >
           <FaHistory />Recent
         </button>
+      <form onSubmit={handleSubmit} className=" flex flex-wrap justify-end gap-4">
+        <input
+          type="text"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Enter city name"
+          className="p-2 border rounded mr-2 w-[400px]"
+        />
+        <button type="submit" className="p-2 bg-blue-500 text-white rounded">
+          Search
+        </button>
+      
       </form>
 
       {isLoading && <Loader />}
