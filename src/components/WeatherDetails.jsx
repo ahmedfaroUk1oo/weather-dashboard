@@ -5,8 +5,8 @@ import Loader from './loader/Loader';
 
 
 const WeatherCard = ({ day, date, location, temp, icon, condition, details, roundedClass }) => (
-  <div className={`md:w-1/3 p-0 ${roundedClass} bg-gray-800`}>
-    <div className={`p-2 ${location ? 'flex justify-between items-center' : 'text-center'} text-white bg-gray-700 ${roundedClass ? 'rounded-t-2xl' : ''}`}>
+  <div className={` p-0 ${roundedClass} bg-gray-800   `}>
+    <div className={`p-2 ${location ? 'flex flex-wrap justify-center items-center' : 'text-center'} text-white bg-gray-700 ${roundedClass ? 'rounded-t-2xl  ' : ''}`}>
       <p className="m-0">{day}</p>
       {date && <p className="m-0">{date}</p>}
     </div>
@@ -51,7 +51,7 @@ export default function WeatherDetails({ data, error, isLoading }) {
       { icon: <WiHumidity size={20} />, text: `${current.humidity}%` },
       { icon: <WiThermometer size={20} />, text: `Feels like ${current.feelslike_c}°C` },
     ],
-    roundedClass: 'rounded-2xl',
+    roundedClass: 'rounded-2xl col-span-2 w-fit m-auto',
   };
 
   const forecastData = forecast.forecastday.map((day, index) => ({
@@ -76,7 +76,7 @@ export default function WeatherDetails({ data, error, isLoading }) {
       style={{ backgroundImage: "url('/assets/benjamin-voros-phIFdC6lA4E-unsplash.jpg')" }}
     >
       <div className="container mx-auto">
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="grid grid-cols-2 items-center gap-4">
           {weatherData.map((weather, index) => (
             <WeatherCard key={index} {...weather} />
           ))}
