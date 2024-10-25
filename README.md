@@ -26,9 +26,9 @@ To use this app, follow these steps:
 2. Open the project in your preferred code editor.
 3. Run `npm install` to install the necessary dependencies.
 4. Run `npm start` to start the development server.
-5. Open your browser and navigate to `http://localhost:3000` to use the app.
+5. Open your browser and navigate to `http://localhost:3005` to use the app.
 
-To use the app, simply type the name of the city you want to search for in the search bar and press **Enter**. The app will display the current weather conditions for the searched city.
+To use the app, simply type the name of the city you want to search for in the search bar and press **Search**. The app will display the current weather conditions for the searched city.
 
 ## Demo
 
