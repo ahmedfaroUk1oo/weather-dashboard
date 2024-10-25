@@ -67,8 +67,9 @@ export default function Home() {
 
   return (
     <>
+    <section className='bg-[#212529]'>
     <div className="container mx-auto p-4">
-      <form onSubmit={handleSubmit} className="mb-4 flex">
+      <form onSubmit={handleSubmit} className="mb-4 flex flex-wrap gap-4">
         <input
           type="text"
           value={searchValue}
@@ -82,15 +83,15 @@ export default function Home() {
         <button 
           type="button" 
           onClick={() => setIsSidebarOpen(true)}
-          className="p-2 bg-gray-500 text-white rounded ml-2"
+          className="p-2 w-[100px] bg-gray-500 flex justify-center items-center gap-4 text-white rounded ml-2"
         >
-          <FaHistory />
+          <FaHistory />Recent
         </button>
       </form>
 
       {isLoading && <Loader />}
       {error && (
-       <img src='/assets/errorFetch.png' alt='error fetching data' className='w-[80%]  m-auto  h-screen' />
+       <img src='/assets/errorFetch.png' alt='error fetching data' className='w-[50%] object-contain  m-auto  h-screen' />
       )}
 
       <WeatherSidebar
@@ -105,6 +106,7 @@ export default function Home() {
         onDelete={handleDelete}
         />
     </div>
+    </section>
     {!data && <p className=' text-center w-full'>Search For Weather</p>}
         {data && <WeatherDetails data={data} />}
         </>

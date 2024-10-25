@@ -1,19 +1,6 @@
 import React from 'react';
 import { WiUmbrella, WiStrongWind, WiDirectionRight, WiHumidity, WiThermometer } from 'react-icons/wi';
 import Loader from './loader/Loader';
-// import axiosInstance from '../api/axiosInstance';
-// import { useQuery } from '@tanstack/react-query';
-
-// const fetchWeather = async (location) => {
-//     const { data } = await axiosInstance.get(`/forecast.json`, {
-//       params: {
-//         key: '1d5462f48ebe44d08de145306233012',
-//         q: location,
-//         days: 5,
-//       },
-//     });
-//     return data;
-//   };
   
 
 
