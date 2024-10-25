@@ -1,7 +1,7 @@
 // src/api/weatherService.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://api.weatherapi.com/v1';
+const API_BASE_URL = 'https://api.weatherapi.com/v1';
 
 export const fetchWeather = async (input) => {
   try {
