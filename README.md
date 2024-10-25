@@ -12,6 +12,8 @@ This is a web application developed as a task project for the React using React.
 - **React.js**
 - **HTML**
 - **CSS**
+- **TailWind CSS**
+- **React Query**
 - **JavaScript**
 - **VS Code**
 - **Weather API**
