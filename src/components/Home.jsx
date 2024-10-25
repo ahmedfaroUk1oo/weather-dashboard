@@ -105,7 +105,7 @@ export default function Home() {
         onDelete={handleDelete}
         />
     </div>
-    {!data && <p className='min-h-screen text-center w-full'>Search For Weather</p>}
+    {!data && <p className=' text-center w-full'>Search For Weather</p>}
         {data && <WeatherDetails data={data} />}
         </>
   );
