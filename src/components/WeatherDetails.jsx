@@ -45,43 +45,40 @@ const WeatherCard = ({ day, date, location, temp, icon, condition, details, roun
 );
 
 export default function WeatherDetails({ data, error, isLoading }) {
-  if (isLoading) return <p className="text-center text-white text-2xl">Loading...</p>;
-  if (error) return <p className="text-center text-red-500 text-2xl">Failed to fetch weather data.</p>;
-  if (!data || !data.current || !data.forecast || !data.location) {
-    return <p className="text-center text-yellow-500 text-2xl">No weather data available.</p>;
-  }
-console.log(data);
+  if (isLoading) return <Loader />;
+  if (error) return <img src='/assets/errorFetch.png' alt='Error fetching weather data' className='h-auto w-1/2 m-auto' />;
+  if (!data) return null;
 
   const { current, forecast, location } = data;
 
   const currentWeather = {
     day: 'Current',
-    location: location.name && location.country ? `${location.name}, ${location.country}` : 'Location Unknown',
-    temp: current.temp_c ?? 'N/A',
-    icon: current.condition?.icon ?? '',
-    condition: current.condition?.text ?? 'Unknown',
+    location: `${location.name}, ${location.country}`,
+    temp: current.temp_c,
+    icon: current.condition.icon,
+    condition: current.condition.text,
     details: [
-      { icon: <WiUmbrella size={20} />, text: `${current.precip_mm ?? 'N/A'}mm` },
-      { icon: <WiStrongWind size={20} />, text: `${current.wind_kph ?? 'N/A'}km/h` },
-      { icon: <WiDirectionRight size={20} />, text: current.wind_dir ?? 'N/A' },
-      { icon: <WiHumidity size={20} />, text: `${current.humidity ?? 'N/A'}%` },
-      { icon: <WiThermometer size={20} />, text: `Feels like ${current.feelslike_c ?? 'N/A'}°C` },
+      { icon: <WiUmbrella size={20} />, text: `${current.precip_mm}mm` },
+      { icon: <WiStrongWind size={20} />, text: `${current.wind_kph}km/h` },
+      { icon: <WiDirectionRight size={20} />, text: current.wind_dir },
+      { icon: <WiHumidity size={20} />, text: `${current.humidity}%` },
+      { icon: <WiThermometer size={20} />, text: `Feels like ${current.feelslike_c}°C` },
     ],
     roundedClass: 'rounded-2xl',
   };
 
-  const forecastData = forecast.forecastday?.map((day, index) => ({
-    day: day.date ? new Date(day.date).toLocaleDateString('en-US', { weekday: 'long' }) : `Day ${index + 1}`,
-    date: day.date ?? 'Unknown',
-    temp: day.day?.avgtemp_c ?? 'N/A',
-    icon: day.day?.condition?.icon ?? '',
-    condition: day.day?.condition?.text ?? 'Unknown',
+  const forecastData = forecast.forecastday.map((day, index) => ({
+    day: new Date(day.date).toLocaleDateString('en-US', { weekday: 'long' }),
+    date: day.date,
+    temp: day.day.avgtemp_c,
+    icon: day.day.condition.icon,
+    condition: day.day.condition.text,
     details: [
-      { icon: <WiUmbrella size={20} />, text: `${day.day?.totalprecip_mm ?? 'N/A'}mm` },
-      { icon: <WiStrongWind size={20} />, text: `${day.day?.maxwind_kph ?? 'N/A'}km/h` },
+      { icon: <WiUmbrella size={20} />, text: `${day.day.totalprecip_mm}mm` },
+      { icon: <WiStrongWind size={20} />, text: `${day.day.maxwind_kph}km/h` },
     ],
     roundedClass: index === forecast.forecastday.length - 1 ? 'rounded-2xl' : '',
-  })) ?? [];
+  }));
 
   const weatherData = [currentWeather, ...forecastData];
 
